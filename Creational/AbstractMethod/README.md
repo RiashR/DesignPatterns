@@ -1,1 +1,0 @@
-# Abstract Method Design Pattern
