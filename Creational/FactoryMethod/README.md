@@ -1,3 +1,3 @@
-# Factory Method Design Patterns
+# Factory Method Design Pattern
 
 # Contains code example of an Insurance Quotation generator.
