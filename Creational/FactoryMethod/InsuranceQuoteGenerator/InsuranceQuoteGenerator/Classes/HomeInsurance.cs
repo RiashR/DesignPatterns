@@ -3,13 +3,10 @@
 namespace InsuranceQuoteGenerator.Classes
 {
     /// <summary>
-    /// Comcrete product: Homeinsurance
+    /// Comcrete product: Home Insurance
     /// </summary>
-    public class HomeInsurance : IQuoteGenarator
+    public class HomeInsurance : IQuote
     {
-        public string GetQuote()
-        {
-            return "Generating a quote for Home insurance...";
-        }
+        public string GetQuote() => "Generating a quote for Home insurance...";
     }
 }

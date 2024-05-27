@@ -19,7 +19,7 @@ namespace InsuranceQuoteGenerator.Client
             InsuranceType selectedType = menu.Run();
 
             // Create appropriate factory based on selected insurance type
-            QuoteGeneratorFactory factory;
+            IQuoteCreator factory;
             switch (selectedType)
             {
                 case InsuranceType.Car:
@@ -34,7 +34,7 @@ namespace InsuranceQuoteGenerator.Client
             }
 
             // Use factory to create insurance object and get quote
-            IQuoteGenarator quoteGenarator = factory.GenerateQuote();  
+            IQuote quoteGenarator = factory.GenerateQuote();  
             var result = quoteGenarator.GetQuote();
 
             Console.ForegroundColor = ConsoleColor.Green;

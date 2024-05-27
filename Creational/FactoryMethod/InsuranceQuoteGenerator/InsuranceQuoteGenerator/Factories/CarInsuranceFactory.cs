@@ -6,11 +6,9 @@ namespace InsuranceQuoteGenerator.Factories
     /// <summary>
     /// Concrete creator: Car Insurance factory.
     /// </summary>
-    public class CarInsuranceFactory : QuoteGeneratorFactory
+    public class CarInsuranceFactory : IQuoteCreator
     {
-        public override IQuoteGenarator GenerateQuote()
-        {
-            return new CarInsurance();
-        }
+        public  IQuote GenerateQuote() => new CarInsurance();
+
     }
 }

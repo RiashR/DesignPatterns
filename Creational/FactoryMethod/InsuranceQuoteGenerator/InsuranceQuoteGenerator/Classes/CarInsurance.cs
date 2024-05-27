@@ -5,11 +5,8 @@ namespace InsuranceQuoteGenerator.Classes
     /// <summary>
     /// Concrete product: Car Insurance.
     /// </summary>
-    public class CarInsurance : IQuoteGenarator
+    public class CarInsurance : IQuote
     {
-        public string GetQuote()
-        {
-            return "Generating a quote for Car insurance...";
-        }
+        public string GetQuote() => "Generating a quote for Car insurance...";
     }
 }
