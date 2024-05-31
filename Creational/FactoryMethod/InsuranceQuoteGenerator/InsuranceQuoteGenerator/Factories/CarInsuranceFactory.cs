@@ -8,7 +8,7 @@ namespace InsuranceQuoteGenerator.Factories
     /// </summary>
     public class CarInsuranceFactory : IQuoteCreator
     {
-        public  IQuote GenerateQuote() => new CarInsurance();
+        public IQuote GenerateQuote() => new CarInsurance();
 
     }
 }
