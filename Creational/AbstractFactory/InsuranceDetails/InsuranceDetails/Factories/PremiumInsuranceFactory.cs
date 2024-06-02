@@ -1,14 +1,12 @@
 ﻿using InsuranceDetails.Classes.CarInsurance;
 using InsuranceDetails.Classes.HealthInsurance;
 using InsuranceDetails.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InsuranceDetails.Factories
 {
+    /// <summary>
+    /// Concrete implementation of IInsuranceFactory for creating premium insurance products.
+    /// </summary>
     public class PremiumInsuranceFactory : IInsuranceFactory
     {
         public ICarInsurance CreateCarInsurance() => new PremiumCarInsurance();
