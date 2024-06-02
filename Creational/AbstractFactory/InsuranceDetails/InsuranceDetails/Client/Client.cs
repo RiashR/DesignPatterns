@@ -10,6 +10,11 @@ namespace InsuranceDetails.Client
 
         public Client(IInsuranceFactory insuranceFactory)
         {
+            if (insuranceFactory == null)
+            {
+                throw new ArgumentNullException(nameof(insuranceFactory), "Factory cannot be null.");
+            }
+
             _carInsurance = insuranceFactory.CreateCarInsurance();
             _healthInsurance = insuranceFactory.CreateHealthInsurance();
         }
