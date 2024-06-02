@@ -24,6 +24,7 @@ namespace InsuranceDetails.Tests
             //Assert
             healthInsurance.Should().BeAssignableTo<BasicHealthInsurance>();
         }
+
         [Test(Description = "Basic Car Insurance")]
         public void GivenBasicInsuranceFactory_WhenCreatingCarInsurance_ThenReturnBasicCarInsurance()
         {
