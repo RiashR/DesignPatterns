@@ -7,6 +7,6 @@ namespace InsuranceDetails.Classes.CarInsurance
     /// </summary>
     public class PremiumCarInsurance : ICarInsurance
     {
-        public void GetCarInsuranceDetails() => Console.WriteLine("Premium Car Insurance: provides comprehensive cover.");
+        public void GetCarInsuranceDetails() => Console.WriteLine("Premium Car Insurance: Covers collision, liability, and comprehensive.");
     }
 }

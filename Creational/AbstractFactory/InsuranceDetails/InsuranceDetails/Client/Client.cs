@@ -24,5 +24,11 @@ namespace InsuranceDetails.Client
             _carInsurance.GetCarInsuranceDetails();
             _healthInsurance.GetHealthInsuranceDetails();
         }
+
+        public void DisplayMessage(string message)
+        {
+            Console.WriteLine($"{message}");
+            Console.WriteLine(new string('-', message.Length));
+        }
     }
 }

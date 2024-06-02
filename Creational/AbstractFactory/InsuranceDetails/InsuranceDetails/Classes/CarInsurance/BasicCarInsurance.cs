@@ -7,6 +7,6 @@ namespace InsuranceDetails.Classes.CarInsurance
     /// </summary>
     public class BasicCarInsurance : ICarInsurance
     {
-        public void GetCarInsuranceDetails() => Console.WriteLine("Basic Car Insurance: covers collisions and liability.");
+        public void GetCarInsuranceDetails() => Console.WriteLine("Basic Car Insurance: Covers collisions and liability.");
     }
 }

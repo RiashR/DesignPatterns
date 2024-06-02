@@ -7,14 +7,14 @@ class Program
     {
         var basicFactory = new BasicInsuranceFactory();
         var basicClient = new Client(basicFactory);
-        Console.WriteLine("Basic Insurance Details");
+        basicClient.DisplayMessage("Basic Insurance Details");
         basicClient.ShowInsuranceDetails();
 
         Console.WriteLine();
 
         var premiumFactory = new PremiumInsuranceFactory();
         var premiumClient = new Client(premiumFactory);
-        Console.WriteLine("Premium Insurance Details");
+        basicClient.DisplayMessage("Premium Insurance Details");
         premiumClient.ShowInsuranceDetails();
     }
 }
