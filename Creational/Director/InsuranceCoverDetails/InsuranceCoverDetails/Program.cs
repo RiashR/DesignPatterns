@@ -9,6 +9,8 @@ namespace InsuranceCoverDetails
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             IHomeInsuranceBuilder homeInsuranceBuilder = new HomeInsuranceBuilder();
             ICarInsuranceBuilder carInsuranceBuilder = new CarInsuranceBuilder();
             var director = new InsuranceDirector();

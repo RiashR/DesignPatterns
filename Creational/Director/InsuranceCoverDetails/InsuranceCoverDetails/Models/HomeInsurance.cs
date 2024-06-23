@@ -13,12 +13,22 @@
 
         public override string ToString()
         {
-            return $"{InsuranceType} Home Insurance : \n" +
-               $"  Address: {Address} \n" +
-               $"  Value: {Value} \n" +
-               $"  Fire Coverage: {FireCoverage} \n" +
-               $"  Theft Coverage: {TheftCoverage} \n" +
-               $"  Flood Coverage: {FloodCoverage} \n";
+            // ANSI escape codes for color
+            string greenColor = "\u001b[32m";  // Green
+            string redColor = "\u001b[31m";    // Red
+            string resetColor = "\u001b[0m";   // Reset to default color
+
+            // Determine color based on boolean values
+            string fireColor = FireCoverage ? greenColor : redColor;
+            string theftColor = TheftCoverage ? greenColor : redColor;
+            string floodColor = FloodCoverage ? greenColor : redColor;
+
+            return $"{InsuranceType} Home Insurance:\n" +
+                   $"  Address: {Address}\n" +
+                   $"  Value: {Value}\n" +
+                   $"  Fire Coverage: {fireColor}{(FireCoverage ? "✓" : "✗")}{resetColor}\n" +
+                   $"  Theft Coverage: {theftColor}{(TheftCoverage ? "✓" : "✗")}{resetColor}\n" +
+                   $"  Flood Coverage: {floodColor}{(FloodCoverage ? "✓" : "✗")}{resetColor}\n";
         }
     }
 }

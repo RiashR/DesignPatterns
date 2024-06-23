@@ -13,12 +13,21 @@
 
         public override string ToString()
         {
-            return $"{InsuranceType} Car Insurance : \n" +
-                $" Model: {Model} \n" +
-                $" Year: {Year} \n" +
-                $" Collision Coverage: {CollisionCoverage} \n" +
-                $" Comprehensive Coverage: {ComprehensiveCoverage}  \n" +
-                $" Excess Amount: {ExcessAmount} \n" ;
+            // ANSI escape codes for color
+            string greenColor = "\u001b[32m";  // Green
+            string redColor = "\u001b[31m";    // Red
+            string resetColor = "\u001b[0m";   // Reset to default color
+
+            // Determine color based on boolean values
+            string collisionColor = CollisionCoverage ? greenColor : redColor;
+            string comprehensiveColor = ComprehensiveCoverage ? greenColor : redColor;
+
+            return $"{InsuranceType} Car Insurance:\n" +
+                   $"  Model: {Model}\n" +
+                   $"  Year: {Year}\n" +
+                   $"  Collision Coverage: {collisionColor}{(CollisionCoverage ? "✓" : "✗")}{resetColor}\n" +
+                   $"  Comprehensive Coverage: {comprehensiveColor}{(ComprehensiveCoverage ? "✓" : "✗")}{resetColor}\n" +
+                   $"  Excess Amount: {ExcessAmount}\n";
         }
 
     }
