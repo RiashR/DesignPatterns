@@ -16,9 +16,9 @@
             return $"{InsuranceType} Car Insurance : \n" +
                 $" Model: {Model} \n" +
                 $" Year: {Year} \n" +
-                $" CollisionCoverage: {CollisionCoverage} \n" +
-                $" ComprehensiveCoverage: {ComprehensiveCoverage}  \n" +
-                $" Deductible: {ExcessAmount} \n" ;
+                $" Collision Coverage: {CollisionCoverage} \n" +
+                $" Comprehensive Coverage: {ComprehensiveCoverage}  \n" +
+                $" Excess Amount: {ExcessAmount} \n" ;
         }
 
     }
