@@ -1,4 +1,5 @@
-﻿using PolicyDetails.Enums;
+﻿using PolicyDetails.Classes;
+using PolicyDetails.Enums;
 
 namespace PolicyDetails.Interfaces
 {
@@ -7,8 +8,7 @@ namespace PolicyDetails.Interfaces
     /// </summary>
     public interface IInsurance
     {
-        string FirstName { get; set; }
-        string LastName { get; set; }
+        public PolicyHolder PolicyHolder { get; set; }
         InsuranceType InsuranceType { get; set; }
         PolicyType PolicyType { get; set; }
         double Premium { get; set; }

@@ -11,48 +11,48 @@ namespace PolicyDetails.Tests
         public void CarInsurance_ShouldCloneSuccessfully()
         {
             // Arrange
-            var originalCarInsurance = new Insurance("Bruce", "Wayne", 1000.00, InsuranceType.Car, PolicyType.Premium);
+            var originalCarInsurance = new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
 
             // Act
-            var clonedCarInsurance = (Insurance)originalCarInsurance.Clone();
+            var clonedInsurance = (Insurance)originalCarInsurance.Clone();
 
             // Assert
             using (new AssertionScope())
             {
-                clonedCarInsurance.Should().NotBeSameAs(originalCarInsurance);
-                clonedCarInsurance.Should().BeEquivalentTo(originalCarInsurance);
+                clonedInsurance.Should().NotBeSameAs(originalCarInsurance);
+                clonedInsurance.Should().BeEquivalentTo(originalCarInsurance);
             }
         }
 
         [Test(Description = "Tests if modifications to the cloned instance do not affect the original instance")]
         public void CarInsurance_ShouldModifyClonedInstanceIndependently()
         {
-            Insurance originalCarInsurance = OriginalCarInsurance();
+            Insurance originalInsurance = OriginalInsurance();
 
             // Act
-            var clonedCarInsurance = (Insurance)originalCarInsurance.Clone();
+            var clonedCarInsurance = (Insurance)originalInsurance.Clone();
             SetClonedInsurance(clonedCarInsurance);
 
             // Assert
             using (new AssertionScope())
             {
-                originalCarInsurance.Should().BeEquivalentTo(new Insurance("Bruce", "Wayne", 1000.00, InsuranceType.Car, PolicyType.Premium));
-                clonedCarInsurance.Should().BeEquivalentTo( new Insurance("Dick", "Grayson", 500.00, InsuranceType.Home, PolicyType.Basic));
+                originalInsurance.Should().BeEquivalentTo(new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium));
+                clonedCarInsurance.Should().BeEquivalentTo( new Insurance(new PolicyHolder() { FirstName = "Dick", LastName = "Grayson" }, 500.00, InsuranceType.Home, PolicyType.Basic));
             }
         }
 
         private static void SetClonedInsurance(Insurance clonedCarInsurance)
         {
-            clonedCarInsurance.FirstName = "Dick";
-            clonedCarInsurance.LastName = "Grayson";
+            clonedCarInsurance.PolicyHolder.FirstName = "Dick";
+            clonedCarInsurance.PolicyHolder.LastName = "Grayson";
             clonedCarInsurance.Premium = 500.00;
             clonedCarInsurance.PolicyType = PolicyType.Basic;
             clonedCarInsurance.InsuranceType = InsuranceType.Home;
         }
 
-        private static Insurance OriginalCarInsurance()
+        private static Insurance OriginalInsurance()
         {
-            return new Insurance("Bruce", "Wayne", 1000.00, InsuranceType.Car, PolicyType.Premium);
+            return new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
         }
     }
 }

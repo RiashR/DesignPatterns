@@ -20,8 +20,8 @@ namespace PolicyDetails
 
         private static void SetClonedInsurance(Insurance clonedCarInsurance)
         {
-            clonedCarInsurance.FirstName = "Dick";
-            clonedCarInsurance.LastName = "Grayson";
+            clonedCarInsurance.PolicyHolder.FirstName = "Dick";
+            clonedCarInsurance.PolicyHolder.LastName = "Grayson";
             clonedCarInsurance.Premium = 500.00;
             clonedCarInsurance.PolicyType = PolicyType.Basic;
             clonedCarInsurance.InsuranceType = InsuranceType.Car;
@@ -29,9 +29,7 @@ namespace PolicyDetails
 
         private static Insurance OriginalCarInsurance()
         {
-            return new Insurance
-                ("Bruce", "Wayne", 1000.00, InsuranceType.Car, PolicyType.Premium);
-
+            return new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
         }
 
     }
