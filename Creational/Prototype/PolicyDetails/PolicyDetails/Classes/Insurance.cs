@@ -6,7 +6,7 @@ namespace PolicyDetails.Classes
     /// <summary>
     /// Represents car insurance.
     /// </summary>
-    public class CarInsurance : IInsurance
+    public class Insurance : IInsurance
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,7 +14,7 @@ namespace PolicyDetails.Classes
         public InsuranceType InsuranceType { get; set; }
         public PolicyType PolicyType { get; set; }
 
-        public CarInsurance(string policyHolderName,
+        public Insurance(string policyHolderName,
             string policyHolderLastName,
             double premium,
             InsuranceType insuranceType,
@@ -27,11 +27,18 @@ namespace PolicyDetails.Classes
             PolicyType = policyType;
         }
 
+        /// <summary>
+        /// Creates a clone of the current insurance object.
+        /// </summary>
+        /// <returns>A clone of the current insurance object.</returns>
         public IInsurance Clone()
         {
             return (IInsurance)this.MemberwiseClone();
         }
 
+        /// <summary>
+        /// Displays the details of the car insurance.
+        /// </summary>
         public void GetDetails()
         {
             Console.WriteLine($"{PolicyType} {InsuranceType} Insurance \n" +

@@ -9,44 +9,30 @@ namespace PolicyDetails
         static void Main(string[] args)
         {
             // Create an instance of CarInsurance
-            CarInsurance originalCarInsurance = OriginalCarInsurance();
+            Insurance originalCarInsurance = OriginalCarInsurance();
             originalCarInsurance.GetDetails();
 
             // Clone the CarInsurance instance
-            CarInsurance clonedCarInsurance = (CarInsurance)OriginalCarInsurance().Clone();
-            SetClonedInsurance(clonedCarInsurance, InsuranceType.Car, 500.00);
+            Insurance clonedCarInsurance = (Insurance)OriginalCarInsurance().Clone();
+            SetClonedInsurance(clonedCarInsurance);
             clonedCarInsurance.GetDetails();
-
-            // Create an instance of HomeInsurance
-            HomeInsurance originalHomeInsurance = OriginalHomeInsurance();
-            originalHomeInsurance.GetDetails();
-
-            // Clone the HomeInsurance instance
-            HomeInsurance clonedHomeInsurance = (HomeInsurance)OriginalHomeInsurance().Clone();
-            SetClonedInsurance(clonedHomeInsurance, InsuranceType.Home, 2500.00);
-            clonedHomeInsurance.GetDetails();
         }
 
-        private static void SetClonedInsurance<T>(T clonedInsurance, InsuranceType insuranceType, double premium) where T : IInsurance
+        private static void SetClonedInsurance(Insurance clonedCarInsurance)
         {
-            clonedInsurance.FirstName = "Dick";
-            clonedInsurance.LastName = "Grayson";
-            clonedInsurance.PolicyType = PolicyType.Basic;
-            clonedInsurance.InsuranceType = insuranceType;
-            clonedInsurance.Premium = premium;
+            clonedCarInsurance.FirstName = "Dick";
+            clonedCarInsurance.LastName = "Grayson";
+            clonedCarInsurance.Premium = 500.00;
+            clonedCarInsurance.PolicyType = PolicyType.Basic;
+            clonedCarInsurance.InsuranceType = InsuranceType.Car;
         }
 
-        private static CarInsurance OriginalCarInsurance()
+        private static Insurance OriginalCarInsurance()
         {
-            return new CarInsurance
+            return new Insurance
                 ("Bruce", "Wayne", 1000.00, InsuranceType.Car, PolicyType.Premium);
 
         }
 
-        private static HomeInsurance OriginalHomeInsurance()
-        {
-            return new HomeInsurance
-                ("Bruce", "Wayne", 5000, InsuranceType.Car, PolicyType.Premium);
-        }
     }
 }
