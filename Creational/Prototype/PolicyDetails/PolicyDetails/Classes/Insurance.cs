@@ -18,11 +18,7 @@ namespace PolicyDetails.Classes
             InsuranceType insuranceType,
             PolicyType policyType)
         {
-            PolicyHolder = new PolicyHolder
-            {
-                FirstName = policyHolder.FirstName,
-                LastName = policyHolder.LastName
-            };
+            PolicyHolder = new PolicyHolder(policyHolder.FirstName, policyHolder.LastName);
             Premium = premium;
             InsuranceType = insuranceType;
             PolicyType = policyType;
@@ -35,15 +31,10 @@ namespace PolicyDetails.Classes
         public IInsurance Clone()
         {
             // Shallow copy
-            var clone = (Insurance)this.MemberwiseClone();
+            var clone = (Insurance)MemberwiseClone();
 
             // Deep copy of the PolicyHolder
-            clone.PolicyHolder = new PolicyHolder
-            {
-                FirstName = this.PolicyHolder.FirstName,
-                LastName = this.PolicyHolder.LastName
-            };
-
+            clone.PolicyHolder = new PolicyHolder(PolicyHolder.FirstName, PolicyHolder.LastName);
             return clone;
         }
 

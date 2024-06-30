@@ -11,7 +11,7 @@ namespace PolicyDetails.Tests
         public void CarInsurance_ShouldCloneSuccessfully()
         {
             // Arrange
-            var originalCarInsurance = new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
+            var originalCarInsurance = new Insurance(new PolicyHolder("Bruce", "Wayne" ), 1000.00, InsuranceType.Car, PolicyType.Premium);
 
             // Act
             var clonedInsurance = (Insurance)originalCarInsurance.Clone();
@@ -27,6 +27,7 @@ namespace PolicyDetails.Tests
         [Test(Description = "Tests if modifications to the cloned instance do not affect the original instance")]
         public void CarInsurance_ShouldModifyClonedInstanceIndependently()
         {
+            // Arrange
             Insurance originalInsurance = OriginalInsurance();
 
             // Act
@@ -36,8 +37,8 @@ namespace PolicyDetails.Tests
             // Assert
             using (new AssertionScope())
             {
-                originalInsurance.Should().BeEquivalentTo(new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium));
-                clonedCarInsurance.Should().BeEquivalentTo( new Insurance(new PolicyHolder() { FirstName = "Dick", LastName = "Grayson" }, 500.00, InsuranceType.Home, PolicyType.Basic));
+                originalInsurance.Should().BeEquivalentTo(new Insurance(new PolicyHolder("Bruce", "Wayne"), 1000.00, InsuranceType.Car, PolicyType.Premium));
+                clonedCarInsurance.Should().BeEquivalentTo( new Insurance(new PolicyHolder("Dick", "Grayson"), 500.00, InsuranceType.Home, PolicyType.Basic));
             }
         }
 
@@ -52,7 +53,7 @@ namespace PolicyDetails.Tests
 
         private static Insurance OriginalInsurance()
         {
-            return new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
+            return new Insurance(new PolicyHolder("Bruce", "Wayne"), 1000.00, InsuranceType.Car, PolicyType.Premium);
         }
     }
 }

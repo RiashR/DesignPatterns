@@ -29,7 +29,7 @@ namespace PolicyDetails
 
         private static Insurance OriginalCarInsurance()
         {
-            return new Insurance(new PolicyHolder() { FirstName = "Bruce", LastName = "Wayne" }, 1000.00, InsuranceType.Car, PolicyType.Premium);
+            return new Insurance(new PolicyHolder("Bruce", "Wayne" ), 1000.00, InsuranceType.Car, PolicyType.Premium);
         }
 
     }
