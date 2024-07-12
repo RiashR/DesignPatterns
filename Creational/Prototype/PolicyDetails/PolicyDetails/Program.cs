@@ -13,9 +13,12 @@ namespace PolicyDetails
             originalCarInsurance.GetDetails();
 
             // Clone the CarInsurance instance
-            Insurance clonedCarInsurance = (Insurance)OriginalCarInsurance().Clone();
+            Insurance clonedCarInsurance = (Insurance)originalCarInsurance.Clone();
             SetClonedInsurance(clonedCarInsurance);
             clonedCarInsurance.GetDetails();
+
+            // issue with shallow copy... ref Insurance.cs and comment the deep cpoy code.
+            //originalCarInsurance.GetDetails();
         }
 
         private static void SetClonedInsurance(Insurance clonedCarInsurance)

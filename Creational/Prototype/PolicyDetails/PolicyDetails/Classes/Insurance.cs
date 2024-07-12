@@ -13,12 +13,9 @@ namespace PolicyDetails.Classes
         public InsuranceType InsuranceType { get; set; }
         public PolicyType PolicyType { get; set; }
 
-        public Insurance(PolicyHolder policyHolder,
-            double premium,
-            InsuranceType insuranceType,
-            PolicyType policyType)
+        public Insurance(PolicyHolder policyHolder,double premium,InsuranceType insuranceType, PolicyType policyType)
         {
-            PolicyHolder = new PolicyHolder(policyHolder.FirstName, policyHolder.LastName);
+            PolicyHolder = policyHolder;
             Premium = premium;
             InsuranceType = insuranceType;
             PolicyType = policyType;
@@ -31,9 +28,9 @@ namespace PolicyDetails.Classes
         public IInsurance Clone()
         {
             // Shallow copy
-            var clone = (Insurance)MemberwiseClone();
+            var clone = (IInsurance)MemberwiseClone();
 
-            // Deep copy of the PolicyHolder
+            // Deep copy of the PolicyHolder - negated the issue of shallow copy... ref: Program.cs
             clone.PolicyHolder = new PolicyHolder(PolicyHolder.FirstName, PolicyHolder.LastName);
             return clone;
         }
