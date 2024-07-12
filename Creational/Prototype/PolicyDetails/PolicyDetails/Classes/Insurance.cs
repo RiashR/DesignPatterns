@@ -28,7 +28,7 @@ namespace PolicyDetails.Classes
         public IInsurance Clone()
         {
             // Shallow copy
-            var clone = (IInsurance)MemberwiseClone();
+            var clone = (Insurance)MemberwiseClone();
 
             // Deep copy of the PolicyHolder - negated the issue of shallow copy... ref: Program.cs
             clone.PolicyHolder = new PolicyHolder(PolicyHolder.FirstName, PolicyHolder.LastName);
