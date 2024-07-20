@@ -2,21 +2,21 @@
 
 namespace InsuranceManager.Classes
 {
-    public class Insurance
+    public class PolicyManager
     {
-        // static variable to hold the lazy instance of the Insurance class
-        private static readonly Lazy<Insurance> _lazyInsuranceManagerInstance =  new(() => new Insurance());
+        // static variable to hold the lazy instance of the class
+        private static readonly Lazy<PolicyManager> _lazyInsuranceManagerInstance =  new(() => new PolicyManager());
 
-        public Insurance()
-        {
-            Policies = new List<Policy>();
-        }
-
-        // property to get the single instance of the class
-        public static Insurance Instance => _lazyInsuranceManagerInstance.Value;
+        // property to get the single instance
+        public static PolicyManager Instance => _lazyInsuranceManagerInstance.Value;
 
         // a list to hold all policies
         public List<Policy> Policies { get; private set; }
+
+        private PolicyManager()
+        {
+            Policies = new List<Policy>();
+        }
 
         #region Display Operations
 
@@ -25,16 +25,14 @@ namespace InsuranceManager.Classes
             Policies.Add(policy);
         }
 
-        public void RemovePolicy(int policyId)
+        public Policy GetPolicy(int policyId)
         {
-            var policy = Policies.Find(p => p.PolicyId == policyId);
-            Policies.Remove(policy);
+            return Policies.Find(p => p.PolicyId == policyId);
         }
 
-        public void GetPolicy(int policyId)
+        public void GetPolicyDetails(int policyId)
         {
-            var policy = Policies.Find(p => p.PolicyId == policyId);
-
+            var policy = GetPolicy(policyId);
             Display(policy);
         }
 
