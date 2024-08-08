@@ -13,10 +13,12 @@ namespace InsuranceClaim
             ClaimDetails legacyClaimDetails = LegacyClaimDetails();
             legacyInsurance.ProcessClaim(legacyClaimDetails);
 
-            // Create an instance of NewInsuranceService and adapt it using NewInsuranceAdapter.
-            IInsuranceService newInsurance = new InsuranceAdapter(new InsuranceService());
+            // Create an instance of InsuranceService and adapt it using InsuranceAdapter.
+            // A more explicit implementation.
+            InsuranceService adaptee = new InsuranceService();
+            IInsuranceService target = new InsuranceAdapter(adaptee);
             ClaimDetails claimDetails = ClaimDetails();
-            newInsurance.ProcessClaim(claimDetails);
+            target.ProcessClaim(claimDetails);
         }
 
         private static ClaimDetails ClaimDetails()
