@@ -10,7 +10,7 @@
         /// Notifies the client about policy updates using the specified channel information.
         /// </summary>
         /// <param name="info">The communication channel information.</param>
-        /// <param name="policyDetails">The details of the policy update.</param>
-        void Notify(TChannelInfo info, string policyDetails);
+        /// <param name="message">The message containing the details of the policy update.</param>
+        void Notify(TChannelInfo info, string message);
     }
 }

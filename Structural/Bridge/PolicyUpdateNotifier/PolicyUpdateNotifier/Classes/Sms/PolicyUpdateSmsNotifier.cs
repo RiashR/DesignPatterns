@@ -22,10 +22,9 @@ namespace PolicyUpdateNotifier.Classes.Sms
         /// Notifies the client about policy updates via SMS.
         /// </summary>
         /// <param name="info">The SMS channel information.</param>
-        /// <param name="policyDetails">The details of the policy update.</param>
-        public void Notify(SmsChannelInfo info, string policyDetails)
+        /// <param name="message">The message containing the details of the policy update.</param>
+        public void Notify(SmsChannelInfo info, string message)
         {
-            string message = policyDetails;
             _communicationChannel.SendMessage(info, message);
         }
     }

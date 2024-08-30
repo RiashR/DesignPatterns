@@ -22,10 +22,9 @@ namespace PolicyUpdateNotifier.Classes.Email
         /// Notifies the client about policy updates via email.
         /// </summary>
         /// <param name="info">The email channel information.</param>
-        /// <param name="policyDetails">The details of the policy update.</param>
-        public void Notify(EmailChannelInfo info, string policyDetails)
+        /// <param name="message">The message containing the details of the policy update.</param>
+        public void Notify(EmailChannelInfo info, string message)
         {
-            string message = policyDetails;
             _communicationChannel.SendMessage(info, message);
         }
     }

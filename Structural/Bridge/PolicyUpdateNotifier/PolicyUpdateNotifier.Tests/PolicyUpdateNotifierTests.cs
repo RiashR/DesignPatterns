@@ -16,13 +16,13 @@ namespace PolicyUpdateNotifier.Tests
             var communicationChannel = Substitute.For<ICommunicationChannel<EmailChannelInfo>>();
             var notifier = new PolicyUpdateEmailNotifier(communicationChannel);
             var emailInfo = new EmailChannelInfo("client@example.com", "smtp.example.com", "client@example.com");
-            var policyDetails = "Your policy number 12345 has been updated with new coverage details.";
+            var message = "Your policy number 12345 has been updated with new coverage details.";
 
             // Act
-            notifier.Notify(emailInfo, policyDetails);
+            notifier.Notify(emailInfo, message);
 
             // Assert
-            communicationChannel.Received(1).SendMessage(emailInfo, policyDetails);
+            communicationChannel.Received(1).SendMessage(emailInfo, message);
         }
 
         [Test]
@@ -32,13 +32,13 @@ namespace PolicyUpdateNotifier.Tests
             var communicationChannel = Substitute.For<ICommunicationChannel<SmsChannelInfo>>();
             var notifier = new PolicyUpdateSmsNotifier(communicationChannel);
             var smsInfo = new SmsChannelInfo("John Doe", "Network A", "123-456-7890");
-            var policyDetails = "Your policy number 12345 has been updated.";
+            var message = "Your policy number 12345 has been updated.";
 
             // Act
-            notifier.Notify(smsInfo, policyDetails);
+            notifier.Notify(smsInfo, message);
 
             // Assert
-            communicationChannel.Received(1).SendMessage(smsInfo, policyDetails);
+            communicationChannel.Received(1).SendMessage(smsInfo, message);
         }
     }
 }

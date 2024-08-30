@@ -8,23 +8,23 @@ namespace PolicyUpdateNotifier
     {
         static void Main(string[] args)
         {
-            const string notificationMessage = "Your policy number 12345 has been updated with new coverage details.";
+            const string message = "Your policy number 12345 has been updated with new coverage details.";
 
             // Create communication channel info for Email
             ICommunicationChannel<EmailChannelInfo> emailChannel = new EmailChannel();
-            EmailChannelInfo emailInfo = new EmailChannelInfo("John Blake", "smtp.example.com", "client@example.com");
-
-            // Create communication channel info for Sms
-            ICommunicationChannel<SmsChannelInfo> smsChannel = new SmsChannel();
-            SmsChannelInfo smsInfo = new SmsChannelInfo("John Blake", "Network A", "123-456-7890");
+            var emailInfo = new EmailChannelInfo("John Blake", "smtp.example.com", "client@example.com");
 
             // Create notifier for Email
             IPolicyUpdateNotifier<EmailChannelInfo> emailNotifier = new PolicyUpdateEmailNotifier(emailChannel);
-            emailNotifier.Notify(emailInfo, notificationMessage);
+            emailNotifier.Notify(emailInfo, message);
+
+            // Create communication channel info for Sms
+            ICommunicationChannel<SmsChannelInfo> smsChannel = new SmsChannel();
+            var smsInfo = new SmsChannelInfo("John Blake", "Network A", "123-456-7890");
 
             // Create notifier for Sms
             IPolicyUpdateNotifier<SmsChannelInfo> smsNotifier = new PolicyUpdateSmsNotifier(smsChannel);
-            smsNotifier.Notify(smsInfo, notificationMessage);
+            smsNotifier.Notify(smsInfo, message);
 
             Console.ReadLine();
         }
