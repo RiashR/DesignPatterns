@@ -1,3 +1,3 @@
 # Design Patterns
 
-# Contains code examples on Creational, Structural and Behavioral design patterns.
+# Contains code examples on Creational, Structural and Behavioral Design Patterns
