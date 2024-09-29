@@ -31,7 +31,7 @@ namespace InsurancePortfolio
             generalInsurancePackage.Add(homeInsurancePackage);
 
             // Display the insurance packages
-            Console.WriteLine("Insurance Package Details:");
+            Console.WriteLine("---Insurance Package Details---");
             generalInsurancePackage.DisplayDetails();
         }
     }
