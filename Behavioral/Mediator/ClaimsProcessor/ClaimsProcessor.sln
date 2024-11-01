@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsProcessor", "ClaimsProcessor\ClaimsProcessor.csproj", "{162AFBEE-0947-476D-AD9C-13AB600D0918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsProcessor.Tests", "ClaimsProcessor.Tests\ClaimsProcessor.Tests.csproj", "{5FBDBC11-225D-4A84-BEF6-69A10D627517}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{162AFBEE-0947-476D-AD9C-13AB600D0918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162AFBEE-0947-476D-AD9C-13AB600D0918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162AFBEE-0947-476D-AD9C-13AB600D0918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162AFBEE-0947-476D-AD9C-13AB600D0918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBDBC11-225D-4A84-BEF6-69A10D627517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBDBC11-225D-4A84-BEF6-69A10D627517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBDBC11-225D-4A84-BEF6-69A10D627517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBDBC11-225D-4A84-BEF6-69A10D627517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2280B9E-B9FE-4964-996A-104E2119C770}
+	EndGlobalSection
+EndGlobal

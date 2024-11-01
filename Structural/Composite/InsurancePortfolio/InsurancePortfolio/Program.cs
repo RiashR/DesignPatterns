@@ -17,16 +17,16 @@ namespace InsurancePortfolio
             var homeContentsInsurance = new IndividualPolicy("Home Contents Insurance");
 
             // Create policy packages (Composites)
-            var carInsurancePackage = new PolicyPackage("Car Insurance Package");
+            var carInsurancePackage = new PolicyPackage("Car Insurance Policy");
             carInsurancePackage.Add(carInsurance);
             carInsurancePackage.Add(tyreInsurance);
 
-            var homeInsurancePackage = new PolicyPackage("Home Insurance Package");
+            var homeInsurancePackage = new PolicyPackage("Home Insurance Policy");
             homeInsurancePackage.Add(homeInsurance);
             homeInsurancePackage.Add(homeContentsInsurance);
 
             // General Insurance Package (Composite)
-            var generalInsurancePackage = new PolicyPackage("General Insurance Package");
+            var generalInsurancePackage = new PolicyPackage("General Insurance Portfolio");
             generalInsurancePackage.Add(carInsurancePackage);
             generalInsurancePackage.Add(homeInsurancePackage);
 
