@@ -1,31 +1,30 @@
-﻿using ClaimsProcessor.Interfaces;
+﻿using ClaimsProcessor.Classes.Events;
+using ClaimsProcessor.Interfaces;
+using ClaimsProcessor.Services.Interfaces;
 
 namespace ClaimsProcessor.Services
 {
     /// <summary>
-    /// A concrete service that handles claim approval in the claims process.
+    /// Implementation of the claim approval service that approves claims based on fraud check results.
     /// </summary>
-    public class ClaimApprovalService : IService
+    public class ClaimApprovalService : IClaimApprovalService
     {
         private IClaimMediator _mediator;
 
         /// <summary>
-        /// Sets the mediator for the service.
+        /// Initializes a new instance of the <see cref="ClaimApprovalService"/> class with a mediator.
         /// </summary>
-        /// <param name="mediator">The mediator to set.</param>
-        public void SetMediator(IClaimMediator mediator) => _mediator = mediator;
-
-        /// <summary>
-        /// Processes a claim approval action based on the results of previous actions (e.g., fraud check).
-        /// </summary>
-        /// <param name="claimId">The ID of the claim being processed.</param>
-        /// <param name="action">The action to be processed.</param>
-        public void Process(string claimId, string action)
+        /// <param name="mediator">The mediator that will handle event notifications.</param>
+        public ClaimApprovalService(IClaimMediator mediator)
         {
-            if (action == "FraudCheckCompleted")
-            {
-                Console.WriteLine($"[Claim Approval] - Approving claim {claimId} after fraud check.");
-            }
+            _mediator = mediator;
+            _mediator.RegisterClaimApprovalService(this);
+        }
+
+        /// <inheritdoc/>
+        public void ApproveClaim(FraudCheckCompletedEvent claimEvent)
+        {
+            Console.WriteLine($"Claim approved for: {claimEvent.ClaimId}");
         }
     }
 }

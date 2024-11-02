@@ -1,32 +1,31 @@
-﻿using ClaimsProcessor.Interfaces;
+﻿using ClaimsProcessor.Classes.Events;
+using ClaimsProcessor.Interfaces;
+using ClaimsProcessor.Services.Interfaces;
 
 namespace ClaimsProcessor.Services
 {
     /// <summary>
-    /// A concrete service that handles fraud detection in the claims process.
+    /// Implementation of the fraud detection service that performs fraud checks on claims.
     /// </summary>
-    public class FraudDetectionService : IService
+    public class FraudDetectionService : IFraudDetectionService
     {
         private IClaimMediator _mediator;
 
         /// <summary>
-        /// Sets the mediator for the service.
+        /// Initializes a new instance of the <see cref="FraudDetectionService"/> class with a mediator.
         /// </summary>
-        /// <param name="mediator">The mediator to set.</param>
-        public void SetMediator(IClaimMediator mediator) => _mediator = mediator;
-
-        /// <summary>
-        /// Processes a fraud detection action on a specific claim.
-        /// </summary>
-        /// <param name="claimId">The ID of the claim being processed.</param>
-        /// <param name="action">The action to be processed.</param>
-        public void Process(string claimId, string action)
+        /// <param name="mediator">The mediator that will handle event notifications.</param>
+        public FraudDetectionService(IClaimMediator mediator)
         {
-            if (action == "Validate")
-            {
-                Console.WriteLine($"[Fraud Detection] - Processing claim {claimId}");
-                _mediator.Notify(claimId, "FraudCheckCompleted", this);
-            }
+            _mediator = mediator;
+            _mediator.RegisterFraudDetectionService(this);
+        }
+
+        /// <inheritdoc/>
+        public void ValidateClaim(ValidateClaimEvent claimEvent)
+        {
+            Console.WriteLine($"Fraud detection completed for claim: {claimEvent.ClaimId}");
+            _mediator.Notify(new FraudCheckCompletedEvent(claimEvent.ClaimId));
         }
     }
 }

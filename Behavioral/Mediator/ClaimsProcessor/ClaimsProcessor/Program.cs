@@ -1,5 +1,5 @@
 ﻿using ClaimsProcessor.Classes;
-using ClaimsProcessor.Interfaces;
+using ClaimsProcessor.Classes.Events;
 using ClaimsProcessor.Services;
 
 namespace ClaimsProcessor
@@ -8,18 +8,15 @@ namespace ClaimsProcessor
     {
         static void Main(string[] args)
         {
-            // Create a ClaimMediator instance to coordinate the claims process.
-            ClaimMediator mediator = new ClaimMediator();
+            // Instantiate the mediator
+            var mediator = new ClaimMediator();
 
-            // Create services and register them with the mediator.
-            IService fraudService = new FraudDetectionService();
-            IService approvalService = new ClaimApprovalService();
+            // Create services and register them with the mediator
+            var fraudDetectionService = new FraudDetectionService(mediator);
+            _ = new ClaimApprovalService(mediator);
 
-            mediator.RegisterService(fraudService);
-            mediator.RegisterService(approvalService);
-
-            // Trigger the claims process by having the fraud service validate a claim.
-            fraudService.Process("Claim123", "Validate");
+            // Trigger a claim validation, which notifies the mediator to approve the claim
+            fraudDetectionService.ValidateClaim(new ValidateClaimEvent("Claim123"));
 
             Console.ReadLine();
         }

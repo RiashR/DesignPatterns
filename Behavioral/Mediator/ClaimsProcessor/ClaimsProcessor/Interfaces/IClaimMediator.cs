@@ -1,22 +1,29 @@
-﻿namespace ClaimsProcessor.Interfaces
+﻿using ClaimsProcessor.Services.Interfaces;
+
+namespace ClaimsProcessor.Interfaces
 {
     /// <summary>
-    /// Defines the contract for a mediator that coordinates claims processing between different services.
+    /// Mediator interface for handling interactions between services in the insurance context.
     /// </summary>
     public interface IClaimMediator
     {
         /// <summary>
-        /// Registers a service with the mediator.
+        /// Registers the fraud detection service with the mediator.
         /// </summary>
-        /// <param name="service">The service to register.</param>
-        void RegisterService(IService service);
+        /// <param name="service">The fraud detection service to register.</param>
+        void RegisterFraudDetectionService(IFraudDetectionService service);
 
         /// <summary>
-        /// Notifies all services about an action taken on a specific claim.
+        /// Registers the claim approval service with the mediator.
         /// </summary>
-        /// <param name="claimId">The ID of the claim being processed.</param>
-        /// <param name="action">The action taken on the claim.</param>
-        /// <param name="sender">The service that triggered the notification.</param>
-        void Notify(string claimId, string action, IService sender);
+        /// <param name="service">The claim approval service to register.</param>
+        void RegisterClaimApprovalService(IClaimApprovalService service);
+
+        /// <summary>
+        /// Notifies the mediator of a specific claim event to be routed to the appropriate service.
+        /// </summary>
+        /// <typeparam name="TEvent">The type of the claim event.</typeparam>
+        /// <param name="claimEvent">The event containing claim details.</param>
+        void Notify<TEvent>(TEvent claimEvent) where TEvent : IClaimEvent;
     }
 }

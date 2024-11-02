@@ -1,39 +1,37 @@
-﻿using ClaimsProcessor.Interfaces;
+﻿using ClaimsProcessor.Classes.Events;
+using ClaimsProcessor.Interfaces;
+using ClaimsProcessor.Services.Interfaces;
 
 namespace ClaimsProcessor.Classes
 {
     /// <summary>
-    /// The concrete mediator class that implements claim processing coordination between different services.
+    /// Implementation of a claim mediator that routes claim events to appropriate services.
     /// </summary>
     public class ClaimMediator : IClaimMediator
     {
-        private List<IService> _services = new List<IService>();
+        private IFraudDetectionService _fraudDetectionService;
+        private IClaimApprovalService _claimApprovalService;
 
-        /// <summary>
-        /// Registers a service with the mediator and sets the mediator for that service.
-        /// </summary>
-        /// <param name="service">The service to register.</param>
-        public void RegisterService(IService service)
-        {
-            _services.Add(service);
-            service.SetMediator(this);
-        }
+        /// <inheritdoc/>
+        public void RegisterFraudDetectionService(IFraudDetectionService service) =>
+            _fraudDetectionService = service;
 
-        /// <summary>
-        /// Notifies all registered services about an action taken on a specific claim,
-        /// excluding the service that triggered the action.
-        /// </summary>
-        /// <param name="claimId">The ID of the claim being processed.</param>
-        /// <param name="action">The action taken on the claim.</param>
-        /// <param name="sender">The service that triggered the notification.</param>
-        public void Notify(string claimId, string action, IService sender)
+        /// <inheritdoc/>
+        public void RegisterClaimApprovalService(IClaimApprovalService service) =>
+            _claimApprovalService = service;
+
+        /// <inheritdoc/>
+        public void Notify<TEvent>(TEvent claimEvent) where TEvent : IClaimEvent
         {
-            foreach (var service in _services)
+            // Route specific events to appropriate services
+            switch (claimEvent)
             {
-                if (service != sender)
-                {
-                    service.Process(claimId, action);
-                }
+                case ValidateClaimEvent validateClaimEvent:
+                    _fraudDetectionService?.ValidateClaim(validateClaimEvent);
+                    break;
+                case FraudCheckCompletedEvent fraudCheckCompletedEvent:
+                    _claimApprovalService?.ApproveClaim(fraudCheckCompletedEvent);
+                    break;
             }
         }
     }
