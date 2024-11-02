@@ -4,6 +4,9 @@ using ClaimsProcessor.Services;
 
 namespace ClaimsProcessor
 {
+    /// <summary>
+    /// Main entry point for the insurance mediator program.
+    /// </summary>
     internal class Program
     {
         static void Main(string[] args)
