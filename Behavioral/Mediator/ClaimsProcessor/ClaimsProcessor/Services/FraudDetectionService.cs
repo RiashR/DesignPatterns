@@ -24,7 +24,7 @@ namespace ClaimsProcessor.Services
         /// <inheritdoc/>
         public void ValidateClaim(ValidateClaimEvent claimEvent)
         {
-            Console.WriteLine($"Fraud detection completed for claim: {claimEvent.ClaimId}");
+            Console.WriteLine($"Fraud detection completed for: {claimEvent.ClaimId}");
             _mediator.Notify(new FraudCheckCompletedEvent(claimEvent.ClaimId));
         }
     }
