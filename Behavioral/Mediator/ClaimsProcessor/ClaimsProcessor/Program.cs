@@ -15,11 +15,11 @@ namespace ClaimsProcessor
             var mediator = new ClaimMediator();
 
             // Create services and register them with the mediator
-            var fraudDetectionService = new FraudDetectionService(mediator);
+            _ = new FraudDetectionService(mediator);
             _ = new ClaimApprovalService(mediator);
 
-            // Trigger a claim validation, which notifies the mediator to approve the claim
-            fraudDetectionService.ValidateClaim(new ValidateClaimEvent("Claim123"));
+            // Trigger a claim validation through the mediator
+            mediator.Notify(new ValidateClaimEvent("Claim123"));
 
             Console.ReadLine();
         }

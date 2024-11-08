@@ -21,7 +21,7 @@ namespace ClaimsProcessor.Classes
             _claimApprovalService = service;
 
         /// <inheritdoc/>
-        public void Notify<TEvent>(TEvent claimEvent) where TEvent : IClaimEvent
+        public void Notify(IClaimEvent claimEvent)
         {
             // Route specific events to appropriate services
             switch (claimEvent)

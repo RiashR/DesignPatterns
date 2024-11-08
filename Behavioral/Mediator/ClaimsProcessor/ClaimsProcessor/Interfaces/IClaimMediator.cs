@@ -22,8 +22,7 @@ namespace ClaimsProcessor.Interfaces
         /// <summary>
         /// Notifies the mediator of a specific claim event to be routed to the appropriate service.
         /// </summary>
-        /// <typeparam name="TEvent">The type of the claim event.</typeparam>
         /// <param name="claimEvent">The event containing claim details.</param>
-        void Notify<TEvent>(TEvent claimEvent) where TEvent : IClaimEvent;
+        void Notify(IClaimEvent claimEvent);
     }
 }
